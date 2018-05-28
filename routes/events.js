@@ -42,7 +42,9 @@ function filterEventsTitle(data, substring) {
 router.get('/all', function (req, res) {
     getAllEvents(function(err, data) {
         if (data !== null) {
-            res.send(data);
+            res.send({
+                data: data
+            });
         }
         else {
             res.send({
