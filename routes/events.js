@@ -1,13 +1,13 @@
-var firebase = require('../config/firebase');
-var database = firebase.database;
+let firebase = require('../config/firebase');
+let database = firebase.database;
 
 
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
 
 router.get('/all', function (req, res, next) {
-    var ref = database.ref('events');
+    let ref = database.ref('events');
     ref.orderByKey().once('value', function(data) {
         res.send(data.val());
     });
