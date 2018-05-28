@@ -55,7 +55,9 @@ router.get('/search', function (req, res) {
         getAllUsers(function(err, data) {
             if (data !== null) {
                 let results = filterUsers(data, queryText);
-                res.send(results);
+                res.send({
+                    data: results
+                });
             }
             else {
                 res.send({

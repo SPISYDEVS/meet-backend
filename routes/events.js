@@ -64,7 +64,9 @@ router.get('/search', function (req, res) {
         getAllEvents(function(err, data) {
             if (data !== null) {
                 let results = filterEventsTitle(data, queryTitle);
-                res.send(results);
+                res.send({
+                    data: results
+                });
             }
             else {
                 res.send({
