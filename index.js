@@ -1,7 +1,9 @@
 var bodyParser = require('body-parser');
 
 const express = require('express');
+
 var homeRoutes = require('./routes/home');
+var eventsRoutes = require('./routes/events');
 
 
 const path = require('path');
@@ -20,6 +22,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
+/** Routing **/
 app.use('/api/home', homeRoutes);
+app.use('/api/events', eventsRoutes);
+
+
 
 module.exports = app;
