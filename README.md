@@ -24,6 +24,18 @@ Backend used for push notifications and complex searches.
     lng: longitude of the center
     radius: Radius from the center
     daysFromNow: A filter that includes only events that happen in daysFromNow
+    
+    Example Response:
+    {
+        data: {
+            events: {
+                <event key>: <event value>
+            },
+            hosts: {
+                <user key>: <user value>
+            }
+        }
+    }
 
 
 
@@ -32,15 +44,41 @@ Backend used for push notifications and complex searches.
     - Searches for users based on first name, last name, or email
     - Query Parameters:
     query: The query text
+    
+    Example Response:
+    {
+        data: {
+            <user key>: <user value>
+        }
+    }
 
 ### GET: /api/search/events
 
     - Searches for events based on its title
     - Query Parameters:
     query: The query text
+    
+    Example Response:
+    {
+        data: {
+            <event key>: <event value>
+        }
+    }
 
 ### GET: /api/search/all
 
     - Searches for both events and users
     - Query Parameters:
     query: The query text
+    
+    Example Response:
+    {
+        data: {
+            events: {
+                <event key>: <event value>
+            },
+            users: {
+                <user key>: <user value>
+            }
+        }
+    }
