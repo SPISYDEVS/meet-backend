@@ -5,6 +5,7 @@ const express = require('express');
 let homeRoutes = require('./routes/home');
 let eventsRoutes = require('./routes/events');
 let usersRoutes = require('./routes/users');
+let searchRoutes = require('./routes/search');
 
 
 const path = require('path');
@@ -28,6 +29,7 @@ app.use(bodyParser.json());
 app.use('/api/home', homeRoutes);
 app.use('/api/events', eventsRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/search', searchRoutes);
 
 
 
