@@ -1,6 +1,6 @@
-var firebase = require('firebase');
-var c = require('./constants');
-
+const firebase = require('firebase');
+const c = require('./constants');
+const geofire = require('geofire');
 
 // Initialize Firebase
 const config = {
@@ -14,11 +14,12 @@ const config = {
 
 firebase.initializeApp(config);
 
-
+const geofireRef = new geofire(firebase.database().ref('geofire'));
 const database = firebase.database();
 const auth = firebase.auth();
 
 module.exports = {
     database: database,
-    auth: auth
+    auth: auth,
+    geofireRef: geofireRef
 }
