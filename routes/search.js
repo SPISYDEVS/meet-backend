@@ -13,7 +13,7 @@ let router = express.Router();
 
 
 function filterUsers(data, substring) {
-    let results = [];
+    let results = {};
     for (let key in data) {
         let user = data[key];
         let email = user.email !== undefined ? user.email.split("@")[0] : undefined;
@@ -23,9 +23,7 @@ function filterUsers(data, substring) {
         let matchedFirst = user.firstName !== undefined ? user.firstName.toLowerCase().indexOf(substring) !== -1 : false;
 
         if (matchedEmail || matchedLast || matchedFirst) {
-            var obj = {};
-            obj[key] = user;
-            results.push(obj);
+            results[key] = user;
         }
     }
     return results;
@@ -33,14 +31,12 @@ function filterUsers(data, substring) {
 
 
 function filterEventsTitle(data, substring) {
-    let results = [];
+    let results = {};
     for (let key in data) {
         let event = data[key];
         let title = event.title.toLowerCase();
         if (title.indexOf(substring) !== -1) {
-            var obj = {};
-            obj[key] = event;
-            results.push(obj);
+            results[key] = event;
         }
     }
     return results;
