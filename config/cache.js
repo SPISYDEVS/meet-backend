@@ -39,8 +39,56 @@ function resetEventsCache(callback) {
 }
 
 
+let usersRef = database.ref('users');
+let eventsRef = database.ref('events');
+
+// Used to ignore the data that were already in firebase
+let initialUsersDataLoaded = false;
+let initialEventsDataLoaded = false;
+
+// Reset cache whenever these events happen
+usersRef.on('child_added', function(snapshot, prevChildKey) {
+    if (initialUsersDataLoaded) {
+        resetUsersCache((err, data) => {})
+    }
+});
+
+usersRef.once('value', function(snapshot) {
+    initialUsersDataLoaded = true;
+});
+
+usersRef.on('child_changed', function(snapshot) {
+    resetUsersCache((err, data) => {})
+});
+
+usersRef.on('child_removed', function(snapshot) {
+    resetUsersCache((err, data) => {})
+});
+
+
+
+eventsRef.on('child_added', function(snapshot, prevChildKey) {
+    if (initialEventsDataLoaded) {
+        console.log('Resetting cache');
+        resetEventsCache((err, data) => {});
+    }
+});
+
+eventsRef.once('value', function(snapshot) {
+    initialEventsDataLoaded = true;
+});
+
+eventsRef.on('child_changed', function(snapshot) {
+    resetEventsCache((err, data) => {});
+});
+
+eventsRef.on('child_removed', function(snapshot) {
+    resetEventsCache((err, data) => {});
+});
+
+
+
 cache.on('expired', function(key, value) {
-    console.log(key);
     switch (key) {
         case 'users':
             resetUsersCache((err, data) => {});

@@ -1,3 +1,5 @@
+let GeoFire = require('geofire');
+
 let c = require('../config/cache');
 let cache = c.cache;
 let resetEventsCache = c.resetEventsCache;
@@ -52,6 +54,39 @@ router.get('/all', function (req, res) {
 });
 
 
+function filterFeedData(events, users, center, daysFromNow, radius) {
+    let eventObject = {};
+    let userObject = {};
+    let today = Date.now();
+    for (let key in events) {
+        let event = events[key];
+        let lat = event.location.latitude;
+        let lng = event.location.longitude;
+        let location = [lat, lng];
+        let distanceFromCenter = GeoFire.distance(center, location);
+        let withinRadius = distanceFromCenter <= radius;
+        if (!withinRadius)
+            continue;
+
+        let startDate = event.startDate;
+        let dayDiff = dateDiff(today, startDate);
+        let withinTime = dayDiff >= 0 && dayDiff < daysFromNow;
+
+        // Satisfies both time and distance requirements
+        if (withinTime) {
+            eventObject[key] = event;
+            userObject[event.hostId] = users[event.hostId];
+        }
+    }
+    return {
+        data: {
+            events: eventObject,
+            hosts: userObject
+        }
+    }
+}
+
+
 router.get('/feed', function (req, res) {
     // Validation
     let radius = req.query.radius;
@@ -68,80 +103,39 @@ router.get('/feed', function (req, res) {
         daysFromNow = Number(daysFromNow);
         lat = Number(lat);
         lng = Number(lng);
+        let center = [lat, lng];
 
-        const geoQuery = geofireRef.query({
-            center: [lat, lng],
-            radius: radius
-        });
+        // Counting async requests to keep track when both requests have finished
+        let asyncCount = 0;
+        let eventsData = null;
+        let usersData = null;
 
-        const eventIds = [];
-
-        const onKeyEnteredRegistration = geoQuery.on("key_entered", function (key, location, distance) {
-            eventIds.push(key);
-        });
-
-        getAllEvents(function(err, events) {
-            if (events !== null) {
-                geoQuery.on("ready", function () {
-                    Promise.all(eventIds.map(id => {
-                        return {
-                            key: id,
-                            value: events[id]
-                        }
-                    }))
-                        .then(events => {
-                            const eventObject = {};
-                            let userIds = [];
-
-                            // Filter events by date
-                            let today = Date.now();
-
-                            events.forEach(event => {
-                                // let eventDate = new Date(event.value.startDate);
-                                let dayDiff = dateDiff(today, event.value.startDate);
-                                if (dayDiff >= 0 && dayDiff < daysFromNow) {
-                                    eventObject[event.key] = event.value;
-                                    userIds.push(event.value.hostId);
-                                }
-                            });
-
-                            getAllUsers(function(err, users) {
-                                if (users !== null) {
-                                    let userObject = {};
-                                    userIds.forEach(id => {
-                                        userObject[id] = users[id];
-                                    });
-
-                                    res.send({
-                                        data: {
-                                            events: eventObject,
-                                            hosts: userObject
-                                        }
-                                    });
-                                }
-                                else {
-                                    res.send({
-                                        error: 'Unable to load users data'
-                                    });
-                                }
-                            });
-
-                        })
-                        .catch((error) => {
-                            res.send({
-                                error: error
-                            });
-                        });
-
-
-                    // This will fire once the initial data is loaded, so now we can cancel the "key_entered" event listener
-                    onKeyEnteredRegistration.cancel();
-                });
+        getAllEvents(function(err, data) {
+            if (data !== null) {
+                eventsData = data;
+                asyncCount += 1;
+                if (asyncCount === 2) {
+                    res.send(filterFeedData(eventsData, usersData, center, daysFromNow, radius));
+                }
             }
             else {
                 res.send({
                     error: 'Unable to load events data'
                 });
+            }
+        });
+        getAllUsers(function(err, data) {
+            if (data !== null) {
+                usersData = data;
+                asyncCount += 1;
+                if (asyncCount === 2) {
+                    res.send(filterFeedData(eventsData, usersData, center, daysFromNow, radius));
+                }
+            }
+            else {
+                res.send({
+                    error: 'Unable to load users data'
+                })
             }
         });
 
