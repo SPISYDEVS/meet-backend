@@ -36,7 +36,18 @@ Backend used for push notifications and complex searches.
             }
         }
     }
-
+    
+    
+### GET: /api/tags/<tag key>
+    
+    - Fetches all events that associate with this tag
+    
+    Example Response:
+    {
+        data: {
+            <event key>: <event value>
+        }
+    }
 
 
 ### GET: /api/search/users
@@ -51,6 +62,7 @@ Backend used for push notifications and complex searches.
             <user key>: <user value>
         }
     }
+    
 
 ### GET: /api/search/events
 
@@ -64,6 +76,21 @@ Backend used for push notifications and complex searches.
             <event key>: <event value>
         }
     }
+    
+
+### GET: /api/search/tags
+
+    - Searches for existing tags based on the tag key
+    - Query Parameters:
+    query: The query text
+
+    Example Response:
+    {
+        data: {
+            <tag key>: true
+        }
+    }
+
 
 ### GET: /api/search/all
 
