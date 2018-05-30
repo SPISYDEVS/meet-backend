@@ -38,7 +38,7 @@ Backend used for push notifications and complex searches.
     }
     
     
-### GET: /api/tags/<tag key>
+### GET: /api/tags/:tag
     
     - Fetches all events that associate with this tag
     

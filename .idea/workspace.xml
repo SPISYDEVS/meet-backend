@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7d98de5b-bcba-432f-85ea-25b39f7f9dfa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/tags.js" afterPath="$PROJECT_DIR$/routes/tags.js" />
-    </list>
+    <list default="true" id="7d98de5b-bcba-432f-85ea-25b39f7f9dfa" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -675,12 +672,12 @@
       <updated>1527470813357</updated>
       <workItem from="1527470815751" duration="1000" />
       <workItem from="1527470878354" duration="19344000" />
-      <workItem from="1527501233220" duration="15700000" />
+      <workItem from="1527501233220" duration="15851000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35045000" />
+    <option name="totallyTimeSpent" value="35196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="22" width="1857" height="1178" extended-state="6" />
