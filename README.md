@@ -109,3 +109,12 @@ Backend used for push notifications and complex searches.
             }
         }
     }
+    
+
+### POST: /api/push/send
+
+    - Send notifications to users
+    - Body Parameters:
+    userIds: User ids separated by ','. For example, 'id1,id2,id3'
+    title: Title of the notification
+    body: Body of the notification
