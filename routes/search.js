@@ -4,8 +4,10 @@ let cache = c.cache;
 
 let events = require('./events');
 let users = require('./users');
+let tags = require('./tags');
 let getAllEvents = events.getAllEvents;
 let getAllUsers = users.getAllUsers;
+let getAllTags = tags.getAllTags;
 
 
 let express = require('express');
@@ -43,6 +45,18 @@ function filterEventsTitle(data, substring) {
 }
 
 
+function filterTags(data, substring) {
+    let results = {};
+    data.forEach(tag => {
+        let tagLower = tag.toLowerCase();
+        if (tagLower.indexOf(substring) !== -1) {
+            results[tag] = true;
+        }
+    });
+    return results;
+}
+
+
 router.get('/users', function (req, res) {
     if (req.query.query === undefined) {
         res.send({
@@ -71,7 +85,7 @@ router.get('/users', function (req, res) {
 router.get('/events', function (req, res) {
     if (req.query.query === undefined) {
         res.send({
-            error: 'Must provide query parameter \'title\''
+            error: 'Must provide query parameter \'query\''
         });
     }
     else {
@@ -86,6 +100,31 @@ router.get('/events', function (req, res) {
             else {
                 res.send({
                     error: 'Unable to load events data'
+                });
+            }
+        });
+    }
+});
+
+
+router.get('/tags', function (req, res) {
+    if (req.query.query === undefined) {
+        res.send({
+            error: 'Must provide query parameter \'query\''
+        });
+    }
+    else {
+        let query = req.query.query.toLowerCase();
+        getAllTags(function(err, data) {
+            if (data !== null) {
+                let results = filterTags(data, query);
+                res.send({
+                    data: results
+                });
+            }
+            else {
+                res.send({
+                    error: 'Unable to load tags data'
                 });
             }
         });
