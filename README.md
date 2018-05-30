@@ -118,3 +118,6 @@ Backend used for push notifications and complex searches.
     userIds: User ids separated by ','. For example, 'id1,id2,id3'
     title: Title of the notification
     body: Body of the notification
+    
+    Note: The content type must be 'application/x-www-form-urlencoded'
+    For Node, use querystring.stringify() to convert the content to this type
