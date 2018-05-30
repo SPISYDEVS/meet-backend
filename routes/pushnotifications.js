@@ -50,12 +50,12 @@ router.post('/send', function(req, res) {
                 usersTokens.forEach(userTokens => {
                     let tokens = userTokens.val();
                     for (let token in tokens) {
-                        let obj = {};
-                        obj['title'] = title;
-                        obj['body'] = body;
-                        obj['to'] = `ExponentPushToken[${token}]`;
-                        obj['priority'] = 'high';
-                        messages.push(obj);
+                        messages.push({
+                            'title': title,
+                            'body': body,
+                            'to': `ExponentPushToken[${token}]`,
+                            'priority': 'high'
+                        });
                     }
                 });
                 console.log(messages);
