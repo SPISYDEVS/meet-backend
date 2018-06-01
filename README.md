@@ -45,7 +45,9 @@ Backend used for push notifications and complex searches.
     Example Response:
     {
         data: {
-            <event key>: <event value>
+            events: {
+                <event key>: <event value>
+            }
         }
     }
 

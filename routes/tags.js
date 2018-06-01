@@ -51,7 +51,9 @@ router.get('/:tag', function(req, res) {
                     });
 
                     res.send({
-                        data: results
+                        data: {
+                            events: results
+                        }
                     });
                 }
                 else {
