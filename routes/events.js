@@ -70,7 +70,8 @@ function filterFeedData(events, users, center, daysFromNow, radius) {
 
         let startDate = event.startDate;
         let dayDiff = dateDiff(today, startDate);
-        let withinTime = dayDiff >= 0 && dayDiff < daysFromNow;
+        const now = Date.now();
+        let withinTime = startDate >= now && dayDiff < daysFromNow;
 
         // Satisfies both time and distance requirements
         if (withinTime) {
