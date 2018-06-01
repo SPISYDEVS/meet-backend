@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7d98de5b-bcba-432f-85ea-25b39f7f9dfa" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/search.js" afterPath="$PROJECT_DIR$/routes/search.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -69,8 +67,8 @@
       <file leaf-file-name="search.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/search.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="499">
-              <caret line="156" column="28" lean-forward="false" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+            <state relative-caret-position="792">
+              <caret line="174" column="70" lean-forward="false" selection-start-line="174" selection-start-column="70" selection-end-line="174" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -688,12 +686,12 @@
       <workItem from="1527470815751" duration="1000" />
       <workItem from="1527470878354" duration="19344000" />
       <workItem from="1527501233220" duration="25038000" />
-      <workItem from="1527819554877" duration="944000" />
+      <workItem from="1527819554877" duration="2426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45327000" />
+    <option name="totallyTimeSpent" value="46809000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="22" width="1857" height="1178" extended-state="6" />
@@ -963,8 +961,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/search.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="156" column="28" lean-forward="false" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+        <state relative-caret-position="792">
+          <caret line="174" column="70" lean-forward="false" selection-start-line="174" selection-start-column="70" selection-end-line="174" selection-end-column="70" />
           <folding />
         </state>
       </provider>

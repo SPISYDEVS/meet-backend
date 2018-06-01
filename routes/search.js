@@ -172,7 +172,7 @@ router.get('/all', function (req, res) {
         });
         getAllTags(function(err, data) {
             if (data !== null) {
-                results['data']['tags'] = filterTags(data, query);
+                results['data']['tags'] = filterTags(data, queryText);
             }
             else {
                 if (results['error'] === undefined)
