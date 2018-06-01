@@ -154,7 +154,7 @@ router.get('/all', function (req, res) {
                 results['error'].push('Unable to load events data');
             }
             count++;
-            if (count === 2)
+            if (count === 3)
                 res.send(results);
         });
         getAllUsers(function(err, data) {
@@ -167,7 +167,20 @@ router.get('/all', function (req, res) {
                 results['error'].push('Unable to load users data');
             }
             count++;
-            if (count === 2)
+            if (count === 3)
+                res.send(results);
+        });
+        getAllTags(function(err, data) {
+            if (data !== null) {
+                results['data']['tags'] = filterTags(data, query);
+            }
+            else {
+                if (results['error'] === undefined)
+                    results['error'] = [];
+                results['error'].push('Unable to load tags data');
+            }
+            count++;
+            if (count === 3)
                 res.send(results);
         });
     }

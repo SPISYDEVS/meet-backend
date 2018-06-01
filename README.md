@@ -94,7 +94,7 @@ Backend used for push notifications and complex searches.
 
 ### GET: /api/search/all
 
-    - Searches for both events and users
+    - Searches for events, users, and tags
     - Query Parameters:
     query: The query text
     
@@ -106,6 +106,9 @@ Backend used for push notifications and complex searches.
             },
             users: {
                 <user key>: <user value>
+            },
+            tags: {
+                <tag>: true
             }
         }
     }
