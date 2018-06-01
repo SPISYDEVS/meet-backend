@@ -6,6 +6,7 @@ let homeRoutes = require('./routes/home');
 let eventsRoutes = require('./routes/events');
 let usersRoutes = require('./routes/users');
 let searchRoutes = require('./routes/search');
+let tagsRoutes = require('./routes/tags');
 let pushRoutes = require('./routes/pushnotifications');
 
 
@@ -30,6 +31,7 @@ app.use(bodyParser.json());
 app.use('/api/home', homeRoutes);
 app.use('/api/events', eventsRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/tags', tagsRoutes);
 app.use('/api/search', searchRoutes);
 app.use('/api/push', pushRoutes);
 
