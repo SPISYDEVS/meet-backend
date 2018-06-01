@@ -39,6 +39,13 @@ router.get('/:tag', function(req, res) {
     else {
         // Getting the eventIds associated with this tag
         tagsRef.child(`${tag}/events`).once('value', function(snapshot) {
+            if (snapshot.val() === null) {
+                res.send({
+                    error: 'Invalid tag'
+                });
+                return;
+            }
+
             // snapshot contains keys as eventId
             let results = {};
             let eventIds = Object.keys(snapshot.val());
