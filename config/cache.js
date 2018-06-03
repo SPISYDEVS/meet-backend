@@ -13,28 +13,40 @@ let cache = new NodeCache({
 
 function resetUsersCache(callback) {
     database.ref('users').orderByKey().once('value', function(data) {
-        cache.set("users", data.val(), function(err, success) {
-            if (!err && success) {
-                callback(null, data.val());
-            }
-            else {
-                callback(err, null);
-            }
-        })
+        let users = data.val();
+        if (users !== null) {
+            cache.set("users", users, function (err, success) {
+                if (!err && success) {
+                    callback(null, users);
+                }
+                else {
+                    callback(err, null);
+                }
+            });
+        }
+        else {
+            callback('No users fetched', null);
+        }
     });
 }
 
 
 function resetEventsCache(callback) {
     database.ref('events').orderByKey().once('value', function(data) {
-        cache.set("events", data.val(), function(err, success) {
-            if (!err && success) {
-                callback(null, data.val());
-            }
-            else {
-                callback(err, null);
-            }
-        });
+        let events = data.val();
+        if (events !== null) {
+            cache.set("events", events, function(err, success) {
+                if (!err && success) {
+                    callback(null, events);
+                }
+                else {
+                    callback(err, null);
+                }
+            });
+        }
+        else {
+            callback('No events fetched', null);
+        }
     });
 }
 
@@ -43,17 +55,22 @@ function resetTagsCache(callback) {
     database.ref('tags').once('value', function(data) {
         let tags = data.val();
         // Cache only the tags' keys
-        let tagKeys = Object.keys(tags);
+        if (tags !== null) {
+            let tagKeys = Object.keys(tags);
 
-        // tagKeys is an array of tags
-        cache.set("tags", tagKeys, function(err, success) {
-            if (!err && success) {
-                callback(null, tagKeys);
-            }
-            else {
-                callback(err, null);
-            }
-        });
+            // tagKeys is an array of tags
+            cache.set("tags", tagKeys, function (err, success) {
+                if (!err && success) {
+                    callback(null, tagKeys);
+                }
+                else {
+                    callback(err, null);
+                }
+            });
+        }
+        else {
+            callback('No tags fetched', null);
+        }
     });
 }
 
