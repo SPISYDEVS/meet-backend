@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7d98de5b-bcba-432f-85ea-25b39f7f9dfa" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/cache.js" afterPath="$PROJECT_DIR$/config/cache.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/events.js" afterPath="$PROJECT_DIR$/routes/events.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cache.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cache.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/cache.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="47" lean-forward="true" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+            <state relative-caret-position="1054">
+              <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -45,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="events.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="events.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/events.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+            <state relative-caret-position="562">
+              <caret line="75" column="25" lean-forward="true" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -124,8 +124,8 @@
         <option value="$PROJECT_DIR$/routes/search.js" />
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/routes/tags.js" />
-        <option value="$PROJECT_DIR$/routes/events.js" />
         <option value="$PROJECT_DIR$/config/cache.js" />
+        <option value="$PROJECT_DIR$/routes/events.js" />
       </list>
     </option>
   </component>
@@ -166,9 +166,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -239,6 +236,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -690,12 +690,13 @@
       <workItem from="1527819554877" duration="5880000" />
       <workItem from="1527908110361" duration="598000" />
       <workItem from="1527981676313" duration="5000" />
-      <workItem from="1528062794805" duration="209000" />
+      <workItem from="1528062794805" duration="1329000" />
+      <workItem from="1528618916517" duration="661000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51075000" />
+    <option name="totallyTimeSpent" value="52856000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="66" y="22" width="1854" height="1178" extended-state="6" />
@@ -1123,18 +1124,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/events.js">
+    <entry file="file://$PROJECT_DIR$/config/cache.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
-          <caret line="72" column="19" lean-forward="false" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+          <caret line="106" column="0" lean-forward="false" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/cache.js">
+    <entry file="file://$PROJECT_DIR$/routes/events.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="47" lean-forward="true" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
+        <state relative-caret-position="562">
+          <caret line="75" column="25" lean-forward="true" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
           <folding />
         </state>
       </provider>
